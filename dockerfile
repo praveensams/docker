@@ -1,8 +1,7 @@
 FROM praveensam/node
 
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /AZVOL/dev-sailapi
 
 # Install app dependencies
 COPY package.json /usr/src/app/
