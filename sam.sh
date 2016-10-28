@@ -34,3 +34,5 @@ sleep 3
 status
 sleep 2
 docker cp ${s}:/tmp/process.log /tmp/nginx.log
+mkdir -p /AZVOL/{mongodb2/logs,mongodb/log}
+docker run -d -v /AZVOL/mongodb2:/mongodb -v /mnt/mongodb2/logs:/mongodb/log -p 48077:27017 yudu123/mongodb328
