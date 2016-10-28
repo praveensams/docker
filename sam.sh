@@ -14,7 +14,7 @@ sleep 2
 s=`docker ps -a | grep 'praveensam/node' | awk '{print $1}'`
 docker exec -d ${s} pm2 start /AZVOL/dev-sailapi/server.js
 sleep 2
-node_ip=`docker inspect ${s} | grep -i ipaddress | tail -1 | sed 's/[",]//g' | awk '{print $2}'`
+node_ip=`docker inspect ${s} |  perl -ane 'if(/\"IPAddres+\":+\s\"(.*)\"/) {print $1}'`
 sleep 2
 cat nse.conf  | sed  's/proxy_pass http:\/\/.*:8080;/proxy_pass http:\/\/'${node_ip}':4001;/g' | tee  default.conf
 sleep 2
