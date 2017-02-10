@@ -1,3 +1,4 @@
+docker pull praveensams/node && docker pull praveensams/nginx || ( echo "error" && exit 5 )
 docker run  -v /AZVOL:/AZVOL --name "nodejs" -t -d praveensams/node bash
 sleep 2
 docker exec -d nodejs pm2 start server.js
