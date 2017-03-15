@@ -1,0 +1,28 @@
+---
+
+nginx:
+  container_name: nginx
+ 
+  build: ./nginx
+
+  restart: always
+
+  ports:
+     - 80:80
+
+  links:
+     - nodejs:nodejs
+
+
+
+nodejs:
+ container_name: nodejs
+
+ tty: true
+
+ build: ./node
+
+ volumes:
+    - /AZVOL/sailapi:/AZVOL
+
+
