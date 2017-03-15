@@ -1,0 +1,47 @@
+---
+version: '2.0'
+
+services:
+
+ nginx:
+
+  container_name: nginx
+ 
+  build:  
+   context: .
+   dockerfile: nginx.dockerfile
+
+  restart: always
+
+  ports:
+     - 80:80
+
+  links:
+     - nodejs:nodejs
+
+  networks: 
+     - bridge-conn
+
+
+
+ nodejs:
+
+  container_name: nodejs
+
+  tty: true
+
+  build: 
+   context: .
+   dockerfile: node.dockerfile
+
+  volumes:
+    - /AZVOL/sailapi:/AZVOL
+
+  networks: 
+     - bridge-conn
+
+
+
+networks:
+   bridge-conn:
+    driver: bridge
