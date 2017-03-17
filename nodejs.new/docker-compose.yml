@@ -3,6 +3,7 @@ version: '2.0'
 
 services:
 
+<<<<<<< HEAD
  mongodb:
   
   container_name: mongodb
@@ -23,6 +24,13 @@ services:
   container_name: nginx
 
   build:
+=======
+ nginx:
+
+  container_name: nginx
+ 
+  build:  
+>>>>>>> b5c21e110cadf3559b8c3f40d97f759a6246b993
    context: .
    dockerfile: nginx.dockerfile
 
@@ -32,9 +40,15 @@ services:
      - 80:80
 
   links:
+<<<<<<< HEAD
      - nodejs
 
   networks:
+=======
+     - nodejs:nodejs
+
+  networks: 
+>>>>>>> b5c21e110cadf3559b8c3f40d97f759a6246b993
      - bridge-conn
 
 
@@ -45,17 +59,26 @@ services:
 
   tty: true
 
+<<<<<<< HEAD
   build:
+=======
+  build: 
+>>>>>>> b5c21e110cadf3559b8c3f40d97f759a6246b993
    context: .
    dockerfile: node.dockerfile
 
   volumes:
     - /AZVOL/sailapi:/AZVOL
+<<<<<<< HEAD
   
   links:
     - mongodb
 
   networks:
+=======
+
+  networks: 
+>>>>>>> b5c21e110cadf3559b8c3f40d97f759a6246b993
      - bridge-conn
 
 
@@ -63,4 +86,7 @@ services:
 networks:
    bridge-conn:
     driver: bridge
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5c21e110cadf3559b8c3f40d97f759a6246b993
