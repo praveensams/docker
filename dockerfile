@@ -1,14 +1,13 @@
 FROM praveensam/node
 
 # Create app directory
-WORKDIR /AZVOL/dev-sailapi
+WORKDIR /AZVOL/sailapi
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
+#RUN npm install
 
 # Bundle app source
 COPY . /usr/src/app
 
-EXPOSE 8080
-
+EXPOSE 4001

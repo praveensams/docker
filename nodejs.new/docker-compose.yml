@@ -1,0 +1,66 @@
+---
+version: '2.0'
+
+services:
+
+ mongodb:
+  
+  container_name: mongodb
+  
+  build:
+    context: .
+    dockerfile: mongodb.dockerfile
+  
+  volumes:
+      - /AZVOL/mongodb/data:/mongodb/data
+      - /mnt/mongodb/log:/mongodb/log
+
+  networks:
+     - bridge-conn
+
+ nginx:
+
+  container_name: nginx
+
+  build:
+   context: .
+   dockerfile: nginx.dockerfile
+
+  restart: always
+
+  ports:
+     - 80:80
+
+  links:
+     - nodejs
+
+  networks:
+     - bridge-conn
+
+
+
+ nodejs:
+
+  container_name: nodejs
+
+  tty: true
+
+  build:
+   context: .
+   dockerfile: node.dockerfile
+
+  volumes:
+    - /AZVOL/sailapi:/AZVOL
+  
+  links:
+    - mongodb
+
+  networks:
+     - bridge-conn
+
+
+
+networks:
+   bridge-conn:
+    driver: bridge
+
