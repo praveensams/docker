@@ -1,0 +1,14 @@
+---
+version: '2.0'
+
+services:
+
+ apache:
+  
+  container_name: apacheserver
+  
+  build:
+    context: .
+    dockerfile: dockerfile
+  
+  tty: true 

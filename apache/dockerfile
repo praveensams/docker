@@ -1,0 +1,8 @@
+FROM httpd
+
+COPY index.html /var/www/apache2/htdocs
+
+
+ENTRYPOINT ["apachectl","-D","FOREGROUND"]
+
+
