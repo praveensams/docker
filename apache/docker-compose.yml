@@ -11,4 +11,7 @@ services:
     context: .
     dockerfile: dockerfile
   
+  port: 
+     - 80:80
+
   tty: true 
